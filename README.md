@@ -1,5 +1,16 @@
 # DocuMind AI - PDF Chatbot
 
+
+
+<img width="1859" height="977" alt="image" src="https://github.com/user-attachments/assets/fb7459a2-1473-4935-9d64-dc1a7399a723" />
+
+<img width="1893" height="920" alt="image" src="https://github.com/user-attachments/assets/4869897a-bcc2-4782-b025-a4096358450f" />
+
+<img width="1905" height="912" alt="image" src="https://github.com/user-attachments/assets/99e530e6-aa02-420b-88bc-85d137d35f84" />
+
+<img width="1919" height="962" alt="image" src="https://github.com/user-attachments/assets/102e86ca-00a1-47f2-81c0-b05c81b35aa9" />
+
+
 An AI-powered PDF chatbot that lets you upload documents and have intelligent conversations about their content. Built with React, TypeScript, and Google Gemini AI.
 
 ## Features
