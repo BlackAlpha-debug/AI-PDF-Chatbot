@@ -46,6 +46,20 @@ export function Landing() {
       <main>
         {/* Hero */}
         <section className="hero-gradient relative overflow-hidden pt-20 pb-32">
+          {/* Background decoration */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <svg className="absolute -top-32 -left-32 w-[600px] h-[600px] opacity-[0.04]" viewBox="0 0 400 400" fill="none">
+              <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="0.5" className="text-secondary" />
+              <circle cx="200" cy="200" r="150" stroke="currentColor" strokeWidth="0.5" className="text-secondary" />
+              <circle cx="200" cy="200" r="110" stroke="currentColor" strokeWidth="0.5" className="text-secondary" />
+              <circle cx="200" cy="200" r="70" stroke="currentColor" strokeWidth="0.5" className="text-secondary" />
+            </svg>
+            <svg className="absolute bottom-0 right-0 w-[400px] h-[400px] opacity-[0.03]" viewBox="0 0 200 200" fill="none">
+              <rect x="20" y="20" width="160" height="160" rx="20" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
+              <rect x="50" y="50" width="100" height="100" rx="12" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
+              <rect x="75" y="75" width="50" height="50" rx="6" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
+            </svg>
+          </div>
           <div className="max-w-[1440px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="z-10 text-center lg:text-left">
               <span className="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-semibold tracking-[0.05em]">
@@ -76,31 +90,77 @@ export function Landing() {
 
             <div className="relative z-10 lg:pl-12">
               <div className="glass-card rounded-2xl p-4 shadow-2xl relative">
-                <div className="w-full aspect-[16/10] rounded-lg bg-gradient-to-br from-surface-container-low to-surface-container-high flex items-center justify-center border border-outline-variant/30">
-                  <div className="text-center space-y-4 p-8">
-                    <div className="flex gap-3 justify-center">
-                      <div className="w-1/2 h-48 bg-surface-container-lowest/60 rounded-lg border border-outline-variant/20 p-4 flex flex-col gap-2">
-                        <div className="h-3 bg-outline-variant/30 rounded w-3/4" />
-                        <div className="h-2 bg-outline-variant/20 rounded w-full" />
-                        <div className="h-2 bg-outline-variant/20 rounded w-full" />
-                        <div className="h-2 bg-outline-variant/20 rounded w-5/6" />
-                        <div className="h-2 bg-outline-variant/20 rounded w-full" />
-                        <div className="h-2 bg-outline-variant/20 rounded w-2/3" />
-                      </div>
-                      <div className="w-1/2 h-48 bg-surface-container-lowest/60 rounded-lg border border-outline-variant/20 p-4 flex flex-col gap-2">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-6 h-6 rounded-full bg-secondary/20" />
-                          <div className="h-2 bg-outline-variant/30 rounded w-20" />
-                        </div>
-                        <div className="flex-1 bg-secondary/5 rounded-lg p-2">
-                          <div className="h-2 bg-secondary/20 rounded w-full mb-1" />
-                          <div className="h-2 bg-secondary/20 rounded w-4/5" />
-                        </div>
-                        <div className="h-8 bg-surface-container rounded-lg" />
-                      </div>
-                    </div>
-                  </div>
+                <div className="w-full aspect-[16/10] rounded-lg bg-gradient-to-br from-surface-container-low to-surface-container-high flex items-center justify-center border border-outline-variant/30 overflow-hidden">
+                  {/* App mockup illustration */}
+                  <svg className="w-full h-full" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Sidebar */}
+                    <rect x="0" y="0" width="160" height="400" className="fill-surface-container" />
+                    <rect x="20" y="20" width="24" height="24" rx="6" className="fill-secondary" />
+                    <rect x="52" y="26" width="80" height="12" rx="4" className="fill-on-surface" opacity="0.7" />
+                    <rect x="20" y="64" width="120" height="32" rx="8" className="fill-secondary" opacity="0.9" />
+                    <rect x="52" y="76" width="60" height="8" rx="3" fill="white" opacity="0.9" />
+                    <rect x="20" y="112" width="120" height="28" rx="6" className="fill-secondary" opacity="0.08" />
+                    <rect x="20" y="148" width="120" height="28" rx="6" opacity="0" />
+                    <rect x="20" y="184" width="120" height="28" rx="6" opacity="0" />
+                    <circle cx="34" cy="126" r="6" className="fill-secondary" opacity="0.4" />
+                    <rect x="46" y="122" width="50" height="8" rx="3" className="fill-on-surface" opacity="0.3" />
+                    <circle cx="34" cy="162" r="6" className="fill-on-surface" opacity="0.15" />
+                    <rect x="46" y="158" width="40" height="8" rx="3" className="fill-on-surface" opacity="0.15" />
+                    <circle cx="34" cy="198" r="6" className="fill-on-surface" opacity="0.15" />
+                    <rect x="46" y="194" width="45" height="8" rx="3" className="fill-on-surface" opacity="0.15" />
+
+                    {/* Chat area */}
+                    <rect x="160" y="0" width="280" height="400" className="fill-surface-container-low" />
+                    {/* Top bar */}
+                    <rect x="160" y="0" width="280" height="44" className="fill-surface" opacity="0.8" />
+                    <rect x="176" y="16" width="100" height="10" rx="3" className="fill-on-surface" opacity="0.3" />
+                    {/* User message */}
+                    <rect x="300" y="65" width="120" height="36" rx="12" className="fill-secondary" />
+                    <rect x="316" y="78" width="88" height="8" rx="3" fill="white" opacity="0.8" />
+                    {/* AI message */}
+                    <rect x="176" y="116" width="180" height="72" rx="12" className="fill-surface-container-lowest" opacity="0.8" />
+                    <rect x="192" y="132" width="148" height="6" rx="2" className="fill-on-surface" opacity="0.25" />
+                    <rect x="192" y="144" width="130" height="6" rx="2" className="fill-on-surface" opacity="0.2" />
+                    <rect x="192" y="156" width="140" height="6" rx="2" className="fill-on-surface" opacity="0.2" />
+                    <rect x="192" y="168" width="90" height="6" rx="2" className="fill-on-surface" opacity="0.15" />
+                    {/* User message 2 */}
+                    <rect x="270" y="205" width="150" height="36" rx="12" className="fill-secondary" />
+                    <rect x="286" y="218" width="118" height="8" rx="3" fill="white" opacity="0.8" />
+                    {/* AI message 2 */}
+                    <rect x="176" y="256" width="200" height="56" rx="12" className="fill-surface-container-lowest" opacity="0.8" />
+                    <rect x="192" y="272" width="168" height="6" rx="2" className="fill-on-surface" opacity="0.25" />
+                    <rect x="192" y="284" width="150" height="6" rx="2" className="fill-on-surface" opacity="0.2" />
+                    <rect x="192" y="296" width="100" height="6" rx="2" className="fill-on-surface" opacity="0.15" />
+                    {/* Input bar */}
+                    <rect x="176" y="350" width="248" height="36" rx="12" className="fill-surface-container-lowest" opacity="0.6" />
+                    <rect x="192" y="364" width="80" height="8" rx="3" className="fill-on-surface" opacity="0.12" />
+                    <rect x="398" y="356" width="22" height="22" rx="6" className="fill-secondary" opacity="0.8" />
+
+                    {/* PDF viewer area */}
+                    <rect x="440" y="0" width="200" height="400" className="fill-surface-container-lowest" />
+                    <rect x="440" y="0" width="200" height="44" className="fill-surface" opacity="0.8" />
+                    <rect x="456" y="16" width="60" height="10" rx="3" className="fill-on-surface" opacity="0.3" />
+                    {/* PDF page */}
+                    <rect x="468" y="60" width="144" height="196" rx="4" className="fill-surface" stroke="currentColor" strokeWidth="1" className="stroke-outline-variant" opacity="0.5" />
+                    <rect x="484" y="80" width="112" height="6" rx="2" className="fill-on-surface" opacity="0.15" />
+                    <rect x="484" y="94" width="100" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="104" width="108" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="114" width="90" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="124" width="105" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="140" width="112" height="6" rx="2" className="fill-on-surface" opacity="0.15" />
+                    <rect x="484" y="154" width="95" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="164" width="108" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="174" width="80" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="190" width="112" height="6" rx="2" className="fill-on-surface" opacity="0.15" />
+                    <rect x="484" y="204" width="100" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="214" width="90" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    <rect x="484" y="224" width="105" height="4" rx="2" className="fill-on-surface" opacity="0.1" />
+                    {/* Page nav */}
+                    <rect x="500" y="276" width="80" height="24" rx="6" className="fill-surface-container" opacity="0.5" />
+                    <rect x="520" y="284" width="40" height="8" rx="3" className="fill-on-surface" opacity="0.2" />
+                  </svg>
                 </div>
+                {/* Floating badge */}
                 <div className="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl shadow-xl max-w-[240px] hidden sm:block">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
@@ -112,6 +172,17 @@ export function Landing() {
                   </div>
                   <div className="h-2 w-full bg-surface-container rounded-full overflow-hidden">
                     <div className="h-full bg-secondary-container ai-pulse w-3/4" />
+                  </div>
+                </div>
+                {/* Floating badge - top right */}
+                <div className="absolute -top-4 -right-4 glass-card p-3 rounded-xl shadow-xl hidden sm:block">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 bg-secondary rounded-full flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-semibold text-primary">Gemini 2.0 Flash</span>
                   </div>
                 </div>
               </div>
@@ -167,16 +238,51 @@ export function Landing() {
                 </div>
               </div>
               <div className="lg:w-1/2 relative">
-                <div className="rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-gradient-to-br from-surface-container-low to-surface-container-high h-[500px] flex items-center justify-center">
-                  <div className="text-center space-y-4 p-12">
-                    <div className="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                      <svg className="w-10 h-10 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-semibold text-primary">AI-Powered Analysis</h3>
-                    <p className="text-on-surface-variant max-w-sm">Upload any document and get instant insights with our advanced AI engine</p>
-                  </div>
+                <div className="rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-gradient-to-br from-surface-container-low to-surface-container-high h-[500px] flex items-center justify-center p-8">
+                  {/* Workflow illustration */}
+                  <svg className="w-full h-full max-w-[380px]" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Step 1 - Upload */}
+                    <rect x="40" y="10" width="300" height="100" rx="16" className="fill-surface-container-lowest" opacity="0.8" />
+                    <rect x="60" y="30" width="56" height="60" rx="8" className="fill-secondary" opacity="0.12" />
+                    <path d="M88 48 L88 72 M76 60 L88 48 L100 60" className="stroke-secondary" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="132" y="38" width="120" height="10" rx="4" className="fill-on-surface" opacity="0.5" />
+                    <rect x="132" y="56" width="180" height="6" rx="3" className="fill-on-surface" opacity="0.2" />
+                    <rect x="132" y="68" width="150" height="6" rx="3" className="fill-on-surface" opacity="0.15" />
+                    <rect x="132" y="80" width="100" height="6" rx="3" className="fill-on-surface" opacity="0.1" />
+
+                    {/* Arrow 1 */}
+                    <path d="M190 118 L190 148" className="stroke-secondary" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" opacity="0.5" />
+                    <path d="M184 142 L190 152 L196 142" className="fill-secondary" opacity="0.5" />
+
+                    {/* Step 2 - Process */}
+                    <rect x="40" y="158" width="300" height="100" rx="16" className="fill-surface-container-lowest" opacity="0.8" />
+                    <rect x="60" y="178" width="56" height="60" rx="8" className="fill-secondary" opacity="0.12" />
+                    {/* Brain/AI icon */}
+                    <circle cx="88" cy="208" r="16" className="stroke-secondary" strokeWidth="2" opacity="0.8" />
+                    <path d="M80 204 Q84 196 88 204 Q92 196 96 204" className="stroke-secondary" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6" />
+                    <path d="M80 212 Q84 220 88 212 Q92 220 96 212" className="stroke-secondary" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6" />
+                    <rect x="132" y="186" width="140" height="10" rx="4" className="fill-on-surface" opacity="0.5" />
+                    <rect x="132" y="204" width="180" height="6" rx="3" className="fill-on-surface" opacity="0.2" />
+                    <rect x="132" y="216" width="160" height="6" rx="3" className="fill-on-surface" opacity="0.15" />
+                    <rect x="132" y="228" width="120" height="6" rx="3" className="fill-on-surface" opacity="0.1" />
+
+                    {/* Arrow 2 */}
+                    <path d="M190 266 L190 296" className="stroke-secondary" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" opacity="0.5" />
+                    <path d="M184 290 L190 300 L196 290" className="fill-secondary" opacity="0.5" />
+
+                    {/* Step 3 - Chat */}
+                    <rect x="40" y="306" width="300" height="100" rx="16" className="fill-surface-container-lowest" opacity="0.8" />
+                    <rect x="60" y="326" width="56" height="60" rx="8" className="fill-secondary" opacity="0.12" />
+                    {/* Chat icon */}
+                    <rect x="74" y="340" width="28" height="22" rx="6" className="stroke-secondary" strokeWidth="2" fill="none" opacity="0.8" />
+                    <path d="M80 358 L74 366" className="stroke-secondary" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+                    <rect x="80" y="348" width="14" height="3" rx="1.5" className="fill-secondary" opacity="0.4" />
+                    <rect x="80" y="354" width="10" height="3" rx="1.5" className="fill-secondary" opacity="0.3" />
+                    <rect x="132" y="334" width="100" height="10" rx="4" className="fill-on-surface" opacity="0.5" />
+                    <rect x="132" y="352" width="180" height="6" rx="3" className="fill-on-surface" opacity="0.2" />
+                    <rect x="132" y="364" width="140" height="6" rx="3" className="fill-on-surface" opacity="0.15" />
+                    <rect x="132" y="376" width="160" height="6" rx="3" className="fill-on-surface" opacity="0.1" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -210,6 +316,30 @@ export function Landing() {
         <section className="py-20">
           <div className="max-w-[1440px] mx-auto px-8">
             <div className="bg-primary-container rounded-[2rem] p-12 lg:p-20 text-center relative overflow-hidden">
+              {/* Background decoration */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <svg className="absolute -top-16 -left-16 w-[350px] h-[350px] opacity-[0.07]" viewBox="0 0 300 300" fill="none">
+                  <circle cx="150" cy="150" r="140" stroke="white" strokeWidth="1" />
+                  <circle cx="150" cy="150" r="100" stroke="white" strokeWidth="1" />
+                  <circle cx="150" cy="150" r="60" stroke="white" strokeWidth="1" />
+                  <circle cx="150" cy="150" r="20" fill="white" opacity="0.3" />
+                </svg>
+                <svg className="absolute -bottom-20 -right-20 w-[400px] h-[400px] opacity-[0.06]" viewBox="0 0 400 400" fill="none">
+                  <path d="M200 20 L380 200 L200 380 L20 200 Z" stroke="white" strokeWidth="1" />
+                  <path d="M200 80 L320 200 L200 320 L80 200 Z" stroke="white" strokeWidth="1" />
+                  <path d="M200 140 L260 200 L200 260 L140 200 Z" stroke="white" strokeWidth="1" />
+                </svg>
+                <svg className="absolute top-8 right-32 w-[120px] h-[120px] opacity-[0.08]" viewBox="0 0 100 100" fill="none">
+                  <rect x="10" y="10" width="80" height="80" rx="12" stroke="white" strokeWidth="1" />
+                  <path d="M30 50 L45 35 L55 45 L70 30" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="30" cy="50" r="3" fill="white" opacity="0.5" />
+                  <circle cx="70" cy="30" r="3" fill="white" opacity="0.5" />
+                </svg>
+                <svg className="absolute bottom-12 left-24 w-[100px] h-[100px] opacity-[0.07]" viewBox="0 0 80 80" fill="none">
+                  <path d="M40 5 L75 40 L40 75 L5 40 Z" stroke="white" strokeWidth="1" />
+                  <circle cx="40" cy="40" r="12" stroke="white" strokeWidth="1" />
+                </svg>
+              </div>
               <div className="relative z-10">
                 <h2 className="text-5xl font-bold text-on-primary mb-6 tracking-tight">
                   Ready to Supercharge Your Reading?

@@ -160,10 +160,30 @@ export function Pricing() {
                 ))}
               </div>
             </div>
-            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-surface-container to-primary-container flex items-end">
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-container/90 to-transparent" />
-              <div className="relative z-10 p-8">
-                <p className="text-on-primary italic">
+            <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-surface-container to-primary-container flex items-center justify-center p-8">
+              {/* Security illustration */}
+              <svg className="w-full h-full max-w-[320px] max-h-[300px]" viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Shield */}
+                <path d="M160 30 L260 80 L260 170 Q260 240 160 275 Q60 240 60 170 L60 80 Z" className="fill-secondary" opacity="0.08" />
+                <path d="M160 30 L260 80 L260 170 Q260 240 160 275 Q60 240 60 170 L60 80 Z" className="stroke-secondary" strokeWidth="2" fill="none" opacity="0.4" />
+                {/* Inner shield */}
+                <path d="M160 60 L235 98 L235 165 Q235 220 160 248 Q85 220 85 165 L85 98 Z" className="stroke-secondary" strokeWidth="1" fill="none" opacity="0.2" strokeDasharray="6 3" />
+                {/* Lock icon */}
+                <rect x="135" y="130" width="50" height="40" rx="8" className="fill-secondary" opacity="0.25" />
+                <rect x="135" y="130" width="50" height="40" rx="8" className="stroke-secondary" strokeWidth="2" fill="none" opacity="0.6" />
+                <path d="M145 130 L145 115 Q145 100 160 100 Q175 100 175 115 L175 130" className="stroke-secondary" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6" />
+                <circle cx="160" cy="150" r="5" className="fill-secondary" opacity="0.6" />
+                <path d="M160 155 L160 162" className="stroke-secondary" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+                {/* Decorative nodes */}
+                <circle cx="100" cy="100" r="4" className="fill-secondary" opacity="0.3" />
+                <circle cx="220" cy="100" r="4" className="fill-secondary" opacity="0.3" />
+                <circle cx="80" cy="180" r="3" className="fill-secondary" opacity="0.2" />
+                <circle cx="240" cy="180" r="3" className="fill-secondary" opacity="0.2" />
+                <line x1="104" y1="100" x2="135" y2="130" className="stroke-secondary" strokeWidth="1" opacity="0.15" />
+                <line x1="216" y1="100" x2="185" y2="130" className="stroke-secondary" strokeWidth="1" opacity="0.15" />
+              </svg>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-container/90 to-transparent p-8">
+                <p className="text-on-primary italic text-sm">
                   "DocuMind transformed our research workflow. We now process hundreds of pages in minutes." — CTO, TechStream
                 </p>
               </div>
