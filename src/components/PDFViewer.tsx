@@ -58,10 +58,10 @@ function PageCanvas({ pdf, pageNum, scale }: { pdf: pdfjsLib.PDFDocumentProxy; p
   }, [pdf, pageNum, scale])
 
   return (
-    <div className="relative bg-surface-container-lowest shadow-xl rounded-sm border border-outline-variant/50 overflow-hidden">
+    <div className="relative bg-surface-container-lowest shadow-lg rounded-lg border border-outline-variant/30 overflow-hidden">
       <canvas ref={canvasRef} className="block w-full" />
-      <div className="absolute bottom-3 right-3 bg-surface-container/70 backdrop-blur px-2 py-1 rounded text-[10px] font-semibold text-on-surface-variant">
-        PAGE {pageNum}
+      <div className="absolute bottom-2.5 right-2.5 bg-surface/70 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-semibold text-on-surface-variant border border-outline-variant/20">
+        {pageNum}
       </div>
     </div>
   )
@@ -105,38 +105,39 @@ export function PDFViewer({ file, pageCount }: Props) {
   }
 
   return (
-    <section className="w-[40%] bg-surface-bright flex flex-col border-l border-outline-variant/30">
+    <section className="w-[40%] bg-surface-bright/50 flex flex-col border-l border-outline-variant/20">
       {/* Toolbar */}
-      <div className="h-12 flex items-center justify-between px-4 bg-surface/50 border-b border-outline-variant/20 shrink-0">
-        <div className="flex items-center gap-3">
-          <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage <= 1} className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center disabled:opacity-30">
+      <div className="h-12 flex items-center justify-between px-4 bg-surface/50 backdrop-blur-xl border-b border-outline-variant/15 shrink-0">
+        <div className="flex items-center gap-2">
+          <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage <= 1} className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center disabled:opacity-30 transition-colors" aria-label="Previous page">
             <ChevronUp className="w-4 h-4 text-on-surface-variant" />
           </button>
-          <div className="flex items-center bg-surface-container px-2 py-1 rounded-md">
+          <div className="flex items-center bg-surface-container/50 px-2 py-1 rounded-lg border border-outline-variant/20">
             <input
               className="w-8 bg-transparent border-none text-center text-xs font-semibold p-0 focus:ring-0 focus:outline-none text-on-surface"
               type="text"
               defaultValue={currentPage}
               key={currentPage}
               onKeyDown={handlePageInput}
+              aria-label="Page number"
             />
-            <span className="text-on-surface-variant text-xs font-semibold mx-1">/</span>
-            <span className="text-on-surface-variant text-xs font-semibold">{pageCount}</span>
+            <span className="text-on-surface-variant text-xs mx-1">/</span>
+            <span className="text-on-surface-variant text-xs font-medium">{pageCount}</span>
           </div>
-          <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage >= pageCount} className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center disabled:opacity-30">
+          <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage >= pageCount} className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center disabled:opacity-30 transition-colors" aria-label="Next page">
             <ChevronDown className="w-4 h-4 text-on-surface-variant" />
           </button>
-          <div className="h-5 w-[1px] bg-outline-variant/40 mx-1" />
-          <button onClick={zoomOut} className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center">
+          <div className="h-4 w-px bg-outline-variant/30 mx-1" />
+          <button onClick={zoomOut} className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center transition-colors" aria-label="Zoom out">
             <ZoomOut className="w-4 h-4 text-on-surface-variant" />
           </button>
-          <span className="text-[10px] font-semibold text-on-surface-variant w-8 text-center">{Math.round(scale * 100)}%</span>
-          <button onClick={zoomIn} className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center">
+          <span className="text-[10px] font-semibold text-on-surface-variant w-8 text-center tabular-nums">{Math.round(scale * 100)}%</span>
+          <button onClick={zoomIn} className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center transition-colors" aria-label="Zoom in">
             <ZoomIn className="w-4 h-4 text-on-surface-variant" />
           </button>
         </div>
-        <div className="flex gap-2">
-          <button className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center">
+        <div className="flex gap-1">
+          <button className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center transition-colors" aria-label="Search">
             <Search className="w-4 h-4 text-on-surface-variant" />
           </button>
           <button
@@ -148,7 +149,8 @@ export function PDFViewer({ file, pageCount }: Props) {
               a.click()
               URL.revokeObjectURL(url)
             }}
-            className="w-7 h-7 rounded hover:bg-surface-container flex items-center justify-center"
+            className="w-7 h-7 rounded-lg hover:bg-surface-container-high/60 flex items-center justify-center transition-colors"
+            aria-label="Download"
           >
             <Download className="w-4 h-4 text-on-surface-variant" />
           </button>
@@ -156,7 +158,7 @@ export function PDFViewer({ file, pageCount }: Props) {
       </div>
 
       {/* Pages */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 custom-scrollbar flex flex-col items-center gap-6 bg-surface-dim/20">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 custom-scrollbar flex flex-col items-center gap-5 bg-surface-dim/10">
         {pdf ? (
           Array.from({ length: pageCount }, (_, i) => i + 1).map((num) => (
             <div
@@ -171,7 +173,7 @@ export function PDFViewer({ file, pageCount }: Props) {
           <div className="flex-1 flex items-center justify-center py-20">
             <div className="text-center space-y-3">
               <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-sm text-on-surface-variant">Loading PDF...</p>
+              <p className="text-sm text-on-surface-variant font-medium">Loading PDF...</p>
             </div>
           </div>
         )}

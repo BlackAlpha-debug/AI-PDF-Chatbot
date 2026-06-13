@@ -6,7 +6,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import type { Message } from '../hooks/useGeminiChat'
 import ReactMarkdown from 'react-markdown'
 import { PDFViewer } from '../components/PDFViewer'
-import { FileText, Upload, Send, Copy, Check, Trash2, X, ChevronRight, Folder, Clock, Pin, Settings, HelpCircle, LogOut, Paperclip, ThumbsUp, RefreshCw } from 'lucide-react'
+import { FileText, Upload, Send, Copy, Check, Trash2, X, ChevronRight, Folder, Clock, Pin, Settings, HelpCircle, LogOut, Paperclip, ThumbsUp, RefreshCw, Sparkles, Bot } from 'lucide-react'
 
 function Sidebar({ onFileSelect }: { onFileSelect: (f: File) => void }) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -16,17 +16,17 @@ function Sidebar({ onFileSelect }: { onFileSelect: (f: File) => void }) {
   }
 
   return (
-    <aside className="fixed left-0 h-full w-[280px] bg-surface-bright border-r border-outline-variant/30 flex flex-col p-2 gap-2 z-50">
-      <div className="px-4 py-6 flex items-center gap-3">
-        <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
-          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
+    <aside className="fixed left-0 h-full w-[272px] bg-surface-bright/80 backdrop-blur-2xl border-r border-outline-variant/20 flex flex-col p-3 gap-1 z-50">
+      <div className="px-3 py-5 flex items-center gap-2.5">
+        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[var(--color-accent-start)] to-[var(--color-accent-end)] flex items-center justify-center shadow-md shadow-secondary/20">
+          <Sparkles className="w-4 h-4 text-white" />
         </div>
-        <h1 className="text-xl font-black text-on-surface">DocuMind AI</h1>
+        <h1 className="text-lg font-extrabold text-on-surface tracking-tight">
+          DocuMind<span className="text-secondary"> AI</span>
+        </h1>
       </div>
 
-      <div className="px-2 mb-4">
+      <div className="px-1 mb-3">
         <input
           ref={inputRef}
           type="file"
@@ -39,51 +39,51 @@ function Sidebar({ onFileSelect }: { onFileSelect: (f: File) => void }) {
         />
         <button
           onClick={() => inputRef.current?.click()}
-          className="w-full py-3 px-4 bg-secondary text-on-secondary rounded-xl text-xs font-semibold tracking-[0.05em] flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-sm"
+          className="w-full py-3 px-4 btn-gradient rounded-xl text-sm font-semibold flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-lg shadow-secondary/15"
         >
           <Upload className="w-4 h-4" />
           Upload PDF
         </button>
       </div>
 
-      <nav className="flex-1 px-2 space-y-1">
+      <nav className="flex-1 px-1 space-y-0.5">
         {[
-          { icon: <Folder className="w-5 h-5" />, label: 'Library', active: true },
-          { icon: <Clock className="w-5 h-5" />, label: 'Recent', active: false },
-          { icon: <Pin className="w-5 h-5" />, label: 'Pinned', active: false },
-          { icon: <Settings className="w-5 h-5" />, label: 'Settings', active: false },
+          { icon: Folder, label: 'Library', active: true },
+          { icon: Clock, label: 'Recent', active: false },
+          { icon: Pin, label: 'Pinned', active: false },
+          { icon: Settings, label: 'Settings', active: false },
         ].map((item) => (
           <a
             key={item.label}
             href="#"
-            className={`flex items-center gap-3 px-4 py-2.5 rounded-lg hover:translate-x-1 transition-transform ${
+            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-all duration-200 ${
               item.active
-                ? 'bg-secondary/10 text-secondary font-semibold'
-                : 'text-on-surface-variant hover:bg-surface-container-high'
+                ? 'bg-secondary/8 text-secondary font-semibold'
+                : 'text-on-surface-variant hover:bg-surface-container-high/60 hover:text-on-surface'
             }`}
           >
-            {item.icon}
-            <span className="text-xs font-semibold tracking-[0.05em]">{item.label}</span>
+            <item.icon className="w-[18px] h-[18px]" />
+            <span className="text-sm">{item.label}</span>
           </a>
         ))}
       </nav>
 
-      <div className="mt-auto px-2 pb-4 border-t border-outline-variant/30 pt-4 space-y-1">
-        <a href="#" className="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
-          <HelpCircle className="w-5 h-5" />
-          <span className="text-xs font-semibold tracking-[0.05em]">Help</span>
+      <div className="mt-auto px-1 pb-3 border-t border-outline-variant/20 pt-3 space-y-0.5">
+        <a href="#" className="flex items-center gap-3 px-3.5 py-2.5 text-on-surface-variant hover:bg-surface-container-high/60 rounded-xl transition-colors">
+          <HelpCircle className="w-[18px] h-[18px]" />
+          <span className="text-sm">Help</span>
         </a>
-        <Link to="/" className="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
-          <LogOut className="w-5 h-5" />
-          <span className="text-xs font-semibold tracking-[0.05em]">Sign Out</span>
+        <Link to="/" className="flex items-center gap-3 px-3.5 py-2.5 text-on-surface-variant hover:bg-surface-container-high/60 rounded-xl transition-colors">
+          <LogOut className="w-[18px] h-[18px]" />
+          <span className="text-sm">Sign Out</span>
         </Link>
-        <div className="mt-4 px-4 py-3 bg-surface-container-low rounded-xl flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-container flex items-center justify-center text-on-secondary text-xs font-bold">
+        <div className="mt-3 px-3.5 py-3 bg-surface-container-low/60 rounded-xl flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--color-accent-start)] to-[var(--color-accent-end)] flex items-center justify-center text-white text-xs font-bold shadow-sm">
             U
           </div>
           <div>
-            <p className="text-xs font-semibold text-on-surface leading-none">Workspace</p>
-            <p className="text-[10px] text-on-surface-variant mt-1">Free Plan</p>
+            <p className="text-sm font-semibold text-on-surface leading-none">Workspace</p>
+            <p className="text-[11px] text-on-surface-variant mt-0.5">Free Plan</p>
           </div>
         </div>
       </div>
@@ -104,37 +104,40 @@ function ChatMessage({ message, isStreaming }: { message: Message; isStreaming: 
   if (isUser) {
     return (
       <div className="flex justify-end group">
-        <div className="max-w-[70%] bg-secondary text-on-secondary px-4 py-3 rounded-2xl rounded-tr-none shadow-sm">
-          <p>{message.content}</p>
+        <div className="max-w-[70%] bg-gradient-to-br from-[var(--color-accent-start)] to-[var(--color-accent-end)] text-white px-5 py-3.5 rounded-2xl rounded-tr-md shadow-md shadow-secondary/10">
+          <p className="leading-relaxed">{message.content}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="flex group">
-      <div className="max-w-[80%] glass-panel px-5 py-4 rounded-2xl rounded-tl-none shadow-sm space-y-3">
+    <div className="flex gap-3 group">
+      <div className="w-8 h-8 rounded-xl bg-secondary/8 flex items-center justify-center shrink-0 mt-1">
+        <Bot className="w-4 h-4 text-secondary" />
+      </div>
+      <div className="max-w-[80%] glass-panel px-5 py-4 rounded-2xl rounded-tl-md shadow-sm space-y-3">
         {message.content ? (
           <div className="prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-surface-container-lowest prose-pre:border prose-pre:border-outline-variant/30 prose-headings:text-on-surface prose-strong:text-on-surface text-on-surface prose-a:text-secondary prose-code:text-secondary">
             <ReactMarkdown>{message.content}</ReactMarkdown>
           </div>
         ) : isStreaming ? (
-          <div className="flex gap-2 items-center px-2 py-1">
-            <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce" />
-            <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce [animation-delay:0.2s]" />
-            <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce [animation-delay:0.4s]" />
+          <div className="flex gap-1.5 items-center px-1 py-1">
+            <div className="w-2 h-2 bg-secondary rounded-full animate-bounce" />
+            <div className="w-2 h-2 bg-secondary rounded-full animate-bounce [animation-delay:0.15s]" />
+            <div className="w-2 h-2 bg-secondary rounded-full animate-bounce [animation-delay:0.3s]" />
           </div>
         ) : null}
         {message.content && !isStreaming && (
-          <div className="pt-2 flex gap-2">
-            <button onClick={handleCopy} className="p-1.5 rounded-md hover:bg-surface-container-high text-on-surface-variant transition-colors">
-              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+          <div className="pt-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <button onClick={handleCopy} className="p-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" aria-label="Copy">
+              {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
-            <button className="p-1.5 rounded-md hover:bg-surface-container-high text-on-surface-variant transition-colors">
-              <ThumbsUp className="w-4 h-4" />
+            <button className="p-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" aria-label="Like">
+              <ThumbsUp className="w-3.5 h-3.5" />
             </button>
-            <button className="p-1.5 rounded-md hover:bg-surface-container-high text-on-surface-variant transition-colors">
-              <RefreshCw className="w-4 h-4" />
+            <button className="p-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" aria-label="Regenerate">
+              <RefreshCw className="w-3.5 h-3.5" />
             </button>
           </div>
         )}
@@ -189,36 +192,36 @@ export function Dashboard() {
     <div className="bg-surface-container-lowest text-on-surface overflow-hidden h-screen flex">
       <Sidebar onFileSelect={extract} />
 
-      <main className="flex-1 ml-[280px] flex flex-col h-full bg-surface-container-lowest relative">
+      <main className="flex-1 ml-[272px] flex flex-col h-full bg-surface-container-lowest relative">
         {/* TopBar */}
-        <header className="h-14 flex items-center justify-between px-8 border-b border-outline-variant/30 bg-surface/80 backdrop-blur-md sticky top-0 z-40">
+        <header className="h-14 flex items-center justify-between px-6 border-b border-outline-variant/20 bg-surface/60 backdrop-blur-2xl sticky top-0 z-40">
           <div className="flex items-center gap-2 text-on-surface-variant">
             <FileText className="w-4 h-4" />
-            <span className="text-xs font-semibold tracking-[0.05em]">Library</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-xs font-bold tracking-[0.05em] text-on-surface">
+            <span className="text-sm font-medium">Library</span>
+            <ChevronRight className="w-3.5 h-3.5 opacity-40" />
+            <span className="text-sm font-semibold text-on-surface">
               {pdfInfo?.fileName ?? 'No document loaded'}
             </span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             {pdfInfo && (
               <>
-                <div className="h-6 w-[1px] bg-outline-variant/50" />
+                <div className="h-5 w-px bg-outline-variant/30" />
                 <button
                   onClick={clearChat}
                   disabled={messages.length === 0}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-30"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high/60 transition-colors disabled:opacity-30 text-sm"
                 >
-                  <Trash2 className="w-4 h-4" />
-                  <span className="text-xs font-semibold tracking-[0.05em]">Clear</span>
+                  <Trash2 className="w-3.5 h-3.5" />
+                  Clear
                 </button>
                 <button
                   onClick={handleRemove}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high/60 transition-colors text-sm"
                 >
-                  <X className="w-4 h-4" />
-                  <span className="text-xs font-semibold tracking-[0.05em]">Remove</span>
+                  <X className="w-3.5 h-3.5" />
+                  Remove
                 </button>
               </>
             )}
@@ -228,54 +231,52 @@ export function Dashboard() {
         {/* Workspace */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat Panel */}
-          <section className={`${pdfInfo ? 'w-[60%]' : 'w-full'} flex flex-col bg-surface-container-low relative ${pdfInfo ? 'border-r border-outline-variant/20' : ''}`}>
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
+          <section className={`${pdfInfo ? 'w-[60%]' : 'w-full'} flex flex-col bg-surface-container-low/50 relative ${pdfInfo ? 'border-r border-outline-variant/15' : ''}`}>
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-5">
               {!pdfInfo && !isExtracting ? (
                 <div className="flex-1 flex flex-col items-center justify-center h-full py-20">
-                  <div className="w-16 h-16 bg-surface-container-lowest rounded-2xl flex items-center justify-center shadow-sm border border-outline-variant/30 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center mb-6 shadow-sm border border-outline-variant/20">
                     <Upload className="w-8 h-8 text-secondary" />
                   </div>
-                  <h2 className="text-2xl font-semibold text-on-surface mb-2" style={{ letterSpacing: '-0.01em' }}>
+                  <h2 className="text-2xl font-bold text-on-surface mb-2 tracking-tight">
                     Upload a PDF to get started
                   </h2>
-                  <p className="text-sm text-on-surface-variant max-w-sm text-center mb-6">
+                  <p className="text-sm text-on-surface-variant max-w-sm text-center mb-6 leading-relaxed">
                     Click "Upload PDF" in the sidebar to load a document, then start chatting with it.
                   </p>
                 </div>
               ) : isExtracting ? (
                 <div className="flex-1 flex flex-col items-center justify-center h-full py-20">
-                  <div className="w-16 h-16 bg-surface-container-lowest rounded-2xl flex items-center justify-center shadow-sm border border-outline-variant/30 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center mb-6 shadow-sm border border-outline-variant/20">
                     <FileText className="w-8 h-8 text-secondary animate-bounce" />
                   </div>
-                  <h2 className="text-2xl font-semibold text-on-surface mb-2">Extracting PDF content...</h2>
+                  <h2 className="text-2xl font-bold text-on-surface mb-2 tracking-tight">Extracting PDF content...</h2>
                   <p className="text-sm text-on-surface-variant mb-6">Analyzing pages for text extraction</p>
-                  <div className="w-64 bg-surface-container-high rounded-full h-2 overflow-hidden">
+                  <div className="w-64 bg-surface-container-high/50 rounded-full h-2 overflow-hidden">
                     <div
-                      className="h-full bg-secondary rounded-full transition-all duration-300 ease-out"
+                      className="h-full bg-gradient-to-r from-[var(--color-accent-start)] to-[var(--color-accent-end)] rounded-full transition-all duration-300 ease-out"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
-                  <p className="text-sm text-on-surface-variant mt-3">{progress}% complete</p>
+                  <p className="text-sm text-on-surface-variant mt-3 font-medium">{progress}%</p>
                 </div>
               ) : messages.length === 0 ? (
-                <div className="max-w-[85%] mx-auto py-8 text-center space-y-4">
-                  <div className="w-12 h-12 bg-surface-container-lowest rounded-2xl flex items-center justify-center mx-auto shadow-sm border border-outline-variant/30">
-                    <svg className="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 14.5M14.25 3.104c.251.023.501.05.75.082M19.8 14.5l-2.741 3.427a2.25 2.25 0 01-1.748.823H8.69a2.25 2.25 0 01-1.748-.823L4.2 14.5m15.6 0l.106-.132a2.25 2.25 0 00.406-1.852l-1.17-4.398a2.25 2.25 0 00-2.18-1.718H7.038a2.25 2.25 0 00-2.18 1.718l-1.17 4.398a2.25 2.25 0 00.406 1.852l.106.132" />
-                    </svg>
+                <div className="max-w-[85%] mx-auto py-10 text-center space-y-5">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 flex items-center justify-center mx-auto shadow-sm border border-outline-variant/20">
+                    <Sparkles className="w-7 h-7 text-secondary" />
                   </div>
-                  <h2 className="text-2xl font-semibold text-on-surface" style={{ letterSpacing: '-0.01em' }}>
+                  <h2 className="text-2xl font-bold text-on-surface tracking-tight">
                     How can I assist with this document?
                   </h2>
-                  <p className="text-sm text-on-surface-variant max-w-sm mx-auto">
+                  <p className="text-sm text-on-surface-variant max-w-sm mx-auto leading-relaxed">
                     I've analyzed <strong>{pdfInfo?.fileName}</strong>. You can ask for summaries, data extraction, or specific clarifications.
                   </p>
-                  <div className="flex flex-wrap gap-2 justify-center pt-4">
-                    {['Summarize this document', 'What are the key points?', 'Explain this in simple terms', 'What important details stand out?'].map((q) => (
+                  <div className="flex flex-wrap gap-2 justify-center pt-2">
+                    {['Summarize this document', 'What are the key points?', 'Explain in simple terms', 'What details stand out?'].map((q) => (
                       <button
                         key={q}
                         onClick={() => sendMessage(q)}
-                        className="px-4 py-2 rounded-xl text-sm bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-200"
+                        className="px-4 py-2.5 rounded-xl text-sm bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:border-outline-variant/50 transition-all duration-200"
                       >
                         {q}
                       </button>
@@ -295,9 +296,9 @@ export function Dashboard() {
             </div>
 
             {pdfInfo && (
-              <div className="p-6 pt-0">
-                <div className="max-w-3xl mx-auto glass-panel p-2 rounded-2xl shadow-lg flex items-end gap-2">
-                  <button className="p-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant transition-colors">
+              <div className="p-5 pt-0">
+                <div className="max-w-3xl mx-auto glass-panel p-2 rounded-2xl shadow-lg glow-ring flex items-end gap-2">
+                  <button className="p-2.5 rounded-xl hover:bg-surface-container-high/60 text-on-surface-variant transition-colors" aria-label="Attach file">
                     <Paperclip className="w-5 h-5" />
                   </button>
                   <textarea
@@ -308,17 +309,18 @@ export function Dashboard() {
                     placeholder="Ask anything about your document..."
                     disabled={isStreaming}
                     rows={1}
-                    className="flex-1 bg-transparent border-none focus:ring-0 py-3 text-base text-on-surface placeholder:text-on-surface-variant/50 resize-none max-h-32"
+                    className="flex-1 bg-transparent border-none focus:ring-0 py-3 text-base text-on-surface placeholder:text-on-surface-variant/40 resize-none max-h-32 outline-none"
                   />
                   <button
                     onClick={handleSubmit}
                     disabled={!input.trim() || isStreaming}
-                    className="w-12 h-12 bg-secondary text-on-secondary rounded-xl flex items-center justify-center hover:brightness-110 transition-all active:scale-95 disabled:opacity-40"
+                    className="w-11 h-11 btn-gradient rounded-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-30 shadow-md shadow-secondary/15"
+                    aria-label="Send message"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4.5 h-4.5" />
                   </button>
                 </div>
-                <p className="text-[10px] text-center text-on-surface-variant/60 mt-3 font-semibold tracking-[0.05em]">
+                <p className="text-[10px] text-center text-on-surface-variant/50 mt-3 font-medium">
                   DocuMind AI can make mistakes. Verify important information.
                 </p>
               </div>
@@ -330,7 +332,7 @@ export function Dashboard() {
       </main>
 
       {error && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-xl bg-error-container border border-error/20 text-on-error-container text-sm z-50">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-5 py-3 rounded-xl bg-error-container border border-error/20 text-on-error-container text-sm z-50 shadow-lg animate-scale-in">
           {error}
         </div>
       )}
